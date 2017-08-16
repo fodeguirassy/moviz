@@ -21,9 +21,9 @@ class WelcomeMenuFragment : MvpFragment<WelcomeMenuContract.Presenter>(),
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         welcome_menu_recyclerView.adapter = controller.adapter
         welcome_menu_recyclerView.layoutManager = LinearLayoutManager(context)
     }
+
 
 }

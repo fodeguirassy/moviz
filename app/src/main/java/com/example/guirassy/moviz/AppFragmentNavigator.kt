@@ -29,6 +29,7 @@ class AppFragmentNavigator(context: Context, fragmentManager: FragmentManager, c
     override val TAG = "ekino-demo.navigator"
 
     override fun displayDirectors() {
+
         var tarantino = Director("Quentin Tarantino", R.drawable.tarantino_bis)
         var scorsese = Director ("Martin Scorsese", R.drawable.scorsese)
         var directors = listOf(tarantino,scorsese)

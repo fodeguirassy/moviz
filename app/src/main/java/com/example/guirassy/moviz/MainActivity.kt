@@ -10,15 +10,17 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.ekino.ekinodemo.AppFragmentNavigator
+import com.example.guirassy.moviz.model.Director
 import com.example.guirassy.moviz.navigator.welcomeMenu.WelcomeMenuNavigator
 import com.example.guirassy.moviz.ui.welcomeMenu.WelcomeMenuFragment
+import com.example.guirassy.moviz.ui.welcomeMenu.WelcomeMenuPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var navigator : Navigator
-    private lateinit var menuNavigator : WelcomeMenuNavigator
+    private lateinit var navigator: Navigator
+    private lateinit var menuNavigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +28,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         navigator = AppFragmentNavigator(this, supportFragmentManager, R.id.fragment_container)
-       // navigator.displayMovieList("Quentin Tarantino")
+        // navigator.displayMovieList("Quentin Tarantino")
         navigator.displayDirectors()
 
-        menuNavigator = WelcomeMenuNavigator(this, supportFragmentManager, R.id.menu_container)
-        menuNavigator.displayMenu()
+       // menuNavigator = AppFragmentNavigator(this, supportFragmentManager, R.id.menu_container)
+       // menuNavigator.displayDirectors()
+
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -42,12 +45,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+
+        var tarantino = Director("Quentin Tarantino", R.drawable.tarantino_bis)
+        var scorsese = Director ("Martin Scorsese", R.drawable.scorsese)
+        var directors = listOf(tarantino,scorsese)
+
+
+
+
+        val fragment = WelcomeMenuFragment()
+        val presenter = WelcomeMenuPresenter(fragment, navigator)
+        fragment.presenter = presenter
+
+        fragment.setWelcomeMenu(directors)
         //nav_view.setNavigationItemSelectedListener(this)
 
-        supportFragmentManager.beginTransaction().replace(R.id.menu_container, WelcomeMenuFragment()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.menu_container,fragment).commit()
+
     }
 
-    fun closeKeyBoard(){
+    fun closeKeyBoard() {
         var inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE)
     }
 
@@ -84,7 +101,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val directorName  = item.title.toString()
+        val directorName = item.title.toString()
         navigator.displayMovieList(directorName)
         drawer_layout.closeDrawer(GravityCompat.START)
         return true

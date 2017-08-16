@@ -4,6 +4,8 @@ import android.content.Context
 import android.support.v4.app.FragmentManager
 import com.ekino.mvp.FragmentNavigator
 import com.example.guirassy.moviz.Navigator
+import com.example.guirassy.moviz.R
+import com.example.guirassy.moviz.model.Director
 import com.example.guirassy.moviz.model.Movie
 import com.example.guirassy.moviz.ui.welcomeMenu.WelcomeMenuFragment
 import com.example.guirassy.moviz.ui.welcomeMenu.WelcomeMenuPresenter
@@ -12,13 +14,20 @@ import com.example.guirassy.moviz.ui.welcomeMenu.WelcomeMenuPresenter
  * Created by guirassy on 16/08/2017.
  */
 class WelcomeMenuNavigator(context : Context, fragmentManager : FragmentManager, containerViewId : Int)
-    : FragmentNavigator(context,fragmentManager,containerViewId), IWelcomeMenuNavigator, Navigator
+    : FragmentNavigator(context,fragmentManager,containerViewId), IWelcomeMenuNavigator
 {
 
     override fun displayMenu() {
         val welcomeMenuFragment = WelcomeMenuFragment()
-        val welcomeMenuPresenter = WelcomeMenuPresenter(welcomeMenuFragment, this)
+        val welcomeMenuPresenter = WelcomeMenuPresenter(welcomeMenuFragment, this as Navigator)
+
+        var tarantino = Director("Quentin Tarantino", R.drawable.tarantino_bis)
+        var scorsese = Director ("Martin Scorsese", R.drawable.scorsese)
+        var directors = listOf(tarantino,scorsese)
         welcomeMenuFragment.presenter = welcomeMenuPresenter
+
+        welcomeMenuFragment.setWelcomeMenu(directors)
+
         displayAndSetRootFragment(welcomeMenuFragment)
     }
 
@@ -28,17 +37,6 @@ class WelcomeMenuNavigator(context : Context, fragmentManager : FragmentManager,
 
     override fun displayMovieList(directorName: String) {
         println("IN METHOD DISPLAY MOVIE LIST")
-    }
-
-    override fun displayMovieDetailsScreen(movie: Movie) {
-        println("IN METHOD DISPLAY MOVIE DEATAILS SCREEN")
-    }
-
-    override fun displayPreviousFragment() {
-        println("IN METHOD DISPLAY PREVIOUS FRAGMENT")    }
-
-    override fun displayDirectors() {
-        println("IN METHOD DISPLAY DIRECTORS")
     }
 
 }
