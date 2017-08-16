@@ -6,3 +6,12 @@
 /build
 /captures
 .externalNativeBuild
+gradlew
+gradlew.bat
+settings.gradle
+gradle.properties
+build.gradle
+/gradle/wrapper
+/ekino-mvp
+
+

@@ -9,9 +9,7 @@ class WelcomeMenuPresenter(view: WelcomeMenuContract.View, navigator: Navigator)
         WelcomeMenuContract.Presenter {
 
     override fun onDirectorSelected(director: Director) {
-
         println("${director.name}")
-
     }
 
 }
