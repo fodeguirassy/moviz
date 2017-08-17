@@ -9,6 +9,7 @@ import com.ekino.mvp.MvpFragment
 import com.example.guirassy.moviz.MainActivity
 import com.example.guirassy.moviz.R
 import com.example.guirassy.moviz.model.Director
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_welcome_menu.*
 
 class WelcomeMenuFragment : MvpFragment<WelcomeMenuContract.Presenter>(),
@@ -29,5 +30,6 @@ class WelcomeMenuFragment : MvpFragment<WelcomeMenuContract.Presenter>(),
 
     fun onDirectorSelected(director: Director) {
         (activity as MainActivity).navigator.displayMovieList(director.name)
+        (activity as MainActivity).drawer_layout.closeDrawers()
     }
 }
