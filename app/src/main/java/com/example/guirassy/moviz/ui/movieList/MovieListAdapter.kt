@@ -1,4 +1,4 @@
-package com.example.guirassy.moviz.adapter
+package com.example.guirassy.moviz.ui.movieList
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import com.bumptech.glide.Glide
 import com.example.guirassy.moviz.R
 import com.example.guirassy.moviz.model.Movie
-import com.example.guirassy.moviz.ui.MovieListFragment
+import com.example.guirassy.moviz.ui.movieList.MovieListFragment
 import kotlinx.android.synthetic.main.movies_list_row_item.view.*
 
 /**

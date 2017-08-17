@@ -1,6 +1,5 @@
 package com.example.guirassy.moviz
 
-import android.app.Activity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
@@ -10,15 +9,12 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.ekino.ekinodemo.AppFragmentNavigator
-import com.example.guirassy.moviz.model.Director
-import com.example.guirassy.moviz.ui.welcomeMenu.WelcomeMenuFragment
-import com.example.guirassy.moviz.ui.welcomeMenu.WelcomeMenuPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var navigator: Navigator
+    lateinit var navigator: Navigator
     private lateinit var menuNavigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,8 +72,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val directorName = item.title.toString()
-        navigator.displayMovieList(directorName)
+        //val directorName = item.title.toString()
+        //navigator.displayMovieList(directorName)
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }

@@ -3,6 +3,8 @@ package com.example.guirassy.moviz.ui
 import com.example.guirassy.moviz.Navigator
 import com.example.guirassy.moviz.model.Movie
 import com.example.guirassy.moviz.platform.NetflixRService
+import com.example.guirassy.moviz.ui.movieList.MovieListContract
+import com.example.guirassy.moviz.ui.movieList.MovieListPresenter
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import org.junit.Before
@@ -26,7 +28,7 @@ class MovieListPresenterTest {
         netFlexRService =  mock <NetflixRService>{}
         navigator = Mockito.spy(Navigator::class.java)
         view = Mockito.spy(MovieListContract.View::class.java)
-        movieListPresenter = MovieListPresenter(view,navigator,netFlexRService, "Quentin Tarantino")
+        movieListPresenter = MovieListPresenter(view, navigator, netFlexRService, "Quentin Tarantino")
     }
 
     @Test

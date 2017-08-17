@@ -9,7 +9,7 @@ import com.example.guirassy.moviz.R
 import com.example.guirassy.moviz.model.Director
 
 
-class WelcomeMenuItem(private val director: Director) : EpoxyModel<ConstraintLayout>() {
+class WelcomeMenuItem(private val director: Director, private val fragment: WelcomeMenuFragment) : EpoxyModel<ConstraintLayout>() {
 
     override fun getDefaultLayout(): Int {
         return R.layout.menu_list_row_item
@@ -25,7 +25,7 @@ class WelcomeMenuItem(private val director: Director) : EpoxyModel<ConstraintLay
                 .into(imageView)
 
         view.setOnClickListener {
-            println("${director.name}")
+            fragment.onDirectorSelected(director)
         }
     }
 }

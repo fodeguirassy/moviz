@@ -8,7 +8,6 @@ interface WelcomeMenuContract {
     interface View : BaseView<Presenter> {
         fun setWelcomeMenu(directors : List<Director>)
     }
-
     interface Presenter : BasePresenter {
         fun onDirectorSelected(director : Director)
     }

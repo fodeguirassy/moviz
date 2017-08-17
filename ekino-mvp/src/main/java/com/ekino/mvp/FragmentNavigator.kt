@@ -117,8 +117,7 @@ abstract class FragmentNavigator(protected val context: Context,
         fragmentManager
                 .beginTransaction()
                 .replace(containerViewId, fragment, fragment.fragmentTag)
-                .commit();
+                .commit()
     }
 
-    abstract fun displayMovieList(directorName: String)
 }
