@@ -14,11 +14,12 @@ class MovieListFragment : MvpFragment<MovieListContract.Presenter>(),
         MovieListContract.View {
 
     override val defaultLayout: Int = R.layout.fragment_movie_list
-    lateinit var movieListAdapter: MovieListAdapter
+    lateinit private var movieListAdapter: MovieListAdapter
 
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
     }
 

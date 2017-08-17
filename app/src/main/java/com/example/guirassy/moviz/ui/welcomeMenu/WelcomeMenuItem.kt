@@ -23,5 +23,9 @@ class WelcomeMenuItem(private val director: Director) : EpoxyModel<ConstraintLay
         Glide.with(view)
                 .load(director.pictureResId)
                 .into(imageView)
+
+        view.setOnClickListener {
+            println("${director.name}")
+        }
     }
 }

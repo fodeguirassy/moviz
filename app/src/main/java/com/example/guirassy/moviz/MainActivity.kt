@@ -11,7 +11,6 @@ import android.view.Menu
 import android.view.MenuItem
 import com.ekino.ekinodemo.AppFragmentNavigator
 import com.example.guirassy.moviz.model.Director
-import com.example.guirassy.moviz.navigator.welcomeMenu.WelcomeMenuNavigator
 import com.example.guirassy.moviz.ui.welcomeMenu.WelcomeMenuFragment
 import com.example.guirassy.moviz.ui.welcomeMenu.WelcomeMenuPresenter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,11 +27,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         navigator = AppFragmentNavigator(this, supportFragmentManager, R.id.fragment_container)
-        // navigator.displayMovieList("Quentin Tarantino")
-        navigator.displayDirectors()
+        navigator.displayMovieList("Quentin Tarantino")
 
-       // menuNavigator = AppFragmentNavigator(this, supportFragmentManager, R.id.menu_container)
-       // menuNavigator.displayDirectors()
+        menuNavigator = AppFragmentNavigator(this, supportFragmentManager, R.id.menu_container)
+        menuNavigator.displayDirectors()
 
 
         fab.setOnClickListener { view ->
@@ -45,27 +43,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-
-        var tarantino = Director("Quentin Tarantino", R.drawable.tarantino_bis)
-        var scorsese = Director ("Martin Scorsese", R.drawable.scorsese)
-        var directors = listOf(tarantino,scorsese)
-
-
-
-
-        val fragment = WelcomeMenuFragment()
-        val presenter = WelcomeMenuPresenter(fragment, navigator)
-        fragment.presenter = presenter
-
-        fragment.setWelcomeMenu(directors)
-        //nav_view.setNavigationItemSelectedListener(this)
-
-        supportFragmentManager.beginTransaction().replace(R.id.menu_container,fragment).commit()
-
-    }
-
-    fun closeKeyBoard() {
-        var inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE)
+        nav_view.setNavigationItemSelectedListener(this)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -74,9 +52,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onBackPressed() {
-
-        println("I Am in on SUPPORT NAVIGATE UP")
-
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
@@ -106,4 +81,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
+
 }
