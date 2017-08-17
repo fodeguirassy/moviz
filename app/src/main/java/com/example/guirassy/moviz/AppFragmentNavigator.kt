@@ -25,14 +25,24 @@ class AppFragmentNavigator(context: Context, fragmentManager: FragmentManager, c
     override fun displayDirectors() {
         var tarantino = Director("Quentin Tarantino", R.drawable.tarantino_bis)
         var scorsese = Director("Martin Scorsese", R.drawable.scorsese)
-        var directors = listOf(tarantino, scorsese)
+        var directors = listOf(tarantino, scorsese,
+                Director("Spike Lee",R.drawable.lee),
+                Director("Clint Eastwood", R.drawable.eastwood),
+                Director("Ridley Scott", R.drawable.scott),
+                Director("Tim Burton", R.drawable.burton),
+                Director("James Burton", R.drawable.cameron),
+                Director("Christopher Nolan", R.drawable.nolan),
+                Director("David Lynch", R.drawable.lynch),
+                Director("Woody Allen", R.drawable.woodyallen),
+                Director("Steven Spielberg", R.drawable.spielberg),
+                Director("Alfred Hitcock", R.drawable.hitchcock)
+        )
 
         val welcomeMenuFragment = WelcomeMenuFragment()
         val welcomeMenuPresenter = WelcomeMenuPresenter(welcomeMenuFragment, this)
         welcomeMenuFragment.presenter = welcomeMenuPresenter
         welcomeMenuFragment.setWelcomeMenu(directors)
         fragmentManager.beginTransaction().replace(R.id.menu_container, welcomeMenuFragment).commit()
-        //displayAndSetRootFragment(welcomeMenuFragment)
     }
 
     override fun displayOrRestoreScreenOnActivityCreate() {
