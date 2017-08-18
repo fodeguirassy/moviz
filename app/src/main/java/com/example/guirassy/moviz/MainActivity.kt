@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 class MainActivity : AppCompatActivity(){
 
     lateinit var navigator: Navigator
+    lateinit var toggle : ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,17 +33,18 @@ class MainActivity : AppCompatActivity(){
                     .setAction("Action", null).show()
         }
 
-        val toggle = ActionBarDrawerToggle(
+        toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+
+        toggle.setToolbarNavigationClickListener {
+            navigator.displayPreviousFragment()
+        }
+
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        navigator.displayPreviousFragment()
-        return true
-    }
-
+    /*
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -50,7 +52,8 @@ class MainActivity : AppCompatActivity(){
             super.onBackPressed()
         }
     }
-
+    */
+    
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)

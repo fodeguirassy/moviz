@@ -42,8 +42,9 @@ class AppFragmentNavigator(context: Context, fragmentManager: FragmentManager, c
     }
 
     override fun displayPreviousFragment() {
-        fragmentManager.popBackStack()
-        //this.onBackPressed()
+        if(fragmentManager.backStackEntryCount > 0){
+            fragmentManager.popBackStack()
+        }
     }
 
 }

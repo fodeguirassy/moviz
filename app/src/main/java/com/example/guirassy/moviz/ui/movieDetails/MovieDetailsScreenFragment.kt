@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.bumptech.glide.Glide
 import com.ekino.mvp.MvpFragment
+import com.example.guirassy.moviz.MainActivity
 import com.example.guirassy.moviz.R
 import com.example.guirassy.moviz.model.Movie
 import kotlinx.android.synthetic.main.fragment_movie_details_screen.*
@@ -36,6 +37,7 @@ class MovieDetailsScreenFragment : MvpFragment<MovieDetailsScreenContract.Presen
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         var actionBar = (activity as AppCompatActivity).supportActionBar
         if(actionBar != null){
+            (activity as MainActivity).toggle.isDrawerIndicatorEnabled = false
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.title = "${movie.show_title}"
         }
