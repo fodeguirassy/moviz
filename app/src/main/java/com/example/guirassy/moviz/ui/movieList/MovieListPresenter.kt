@@ -1,7 +1,6 @@
 package com.example.guirassy.moviz.ui.movieList
 
 import com.ekino.mvp.MvpPresenter
-import com.example.guirassy.moviz.MainActivity
 import com.example.guirassy.moviz.Navigator
 import com.example.guirassy.moviz.model.Director
 import com.example.guirassy.moviz.model.Movie
@@ -27,6 +26,6 @@ class MovieListPresenter(view: MovieListContract.View, navigator: Navigator, pri
     }
 
     override fun onDirectorSelected(director: Director) {
-        navigator.displayMovieList(director.name)
+        navigator.displayMovieListScreen(director.name)
     }
 }
