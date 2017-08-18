@@ -20,7 +20,7 @@ class WelcomeMenuItem(private val director: Director, private val fragment: Welc
         val directorNameTv = view.findViewById<TextView>(R.id.list_director_name_tv)
 
         directorNameTv.text = director.name
-        Glide.with(view)
+        Glide.with(view.context)
                 .load(director.pictureResId)
                 .into(imageView)
 

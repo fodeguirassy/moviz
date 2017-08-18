@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.example.guirassy.moviz.R
 import com.example.guirassy.moviz.model.Movie
 import com.example.guirassy.moviz.ui.movieList.MovieListFragment
@@ -24,6 +26,7 @@ class MovieListAdapter(private var context : MovieListFragment, private var movi
         Glide
                 .with(context)
                 .load(movies[p0].poster)
+                .placeholder(R.drawable.app_icon)
                 .into(view.movie_list_img_view)
 
         view.movie_name_TV.text = movies[p0].show_title

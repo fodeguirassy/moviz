@@ -21,7 +21,7 @@ class NetflixRService {
 
         }
 
-        fun search (query : String, apiCallback : NetflixRApiCallback){
+        fun search (query : String, apiCallback : NetflixRApiCallback) {
             var encodedUrl = URLEncoder.encode(query, "UTF-8")
                  netflixRApi.getDirectorMovies(encodedUrl)
                     .enqueue(object : Callback<List<Movie>>{
@@ -29,17 +29,11 @@ class NetflixRService {
                             apiCallback.onError(t)
                         }
                         override fun onResponse(call: Call<List<Movie>>?, response: Response<List<Movie>>?) {
-                            apiCallback.onSuccess(response?.body().orEmpty())
+                            val responseBody = response?.body().orEmpty()
+                            apiCallback.onSuccess(responseBody)
+                            //response?.body().toString()
                         }
                     })
-        }
 
-        private fun rawDataToMovies(rawObjects: MutableList<Movie>?) : List<Movie>{
-            rawObjects?.let {
-                rawObjects.forEach{
-                    println("$it")
-                }
-            }
-            return emptyList()
         }
 }

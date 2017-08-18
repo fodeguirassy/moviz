@@ -10,5 +10,4 @@ interface Navigator {
     fun displayMovieList(directorName : String)
     fun displayMovieDetailsScreen(movie: Movie)
     fun displayPreviousFragment()
-    fun displayDirectors()
 }

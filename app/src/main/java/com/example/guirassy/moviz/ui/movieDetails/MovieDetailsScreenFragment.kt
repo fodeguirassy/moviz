@@ -33,14 +33,14 @@ class MovieDetailsScreenFragment : MvpFragment<MovieDetailsScreenContract.Presen
         }
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         var actionBar = (activity as AppCompatActivity).supportActionBar
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.title = "${movie.show_title}"
         }
 
-        Glide.with(view)
+        Glide.with(view.context)
                 .load(movie.poster)
                 .into(movie_poster)
 
