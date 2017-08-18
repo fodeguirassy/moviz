@@ -19,9 +19,6 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
-
-
         
         navigator = AppFragmentNavigator(this, supportFragmentManager, R.id.fragment_container)
         navigator.displayMovieList("Quentin Tarantino")
