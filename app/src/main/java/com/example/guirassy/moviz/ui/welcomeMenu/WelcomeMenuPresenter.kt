@@ -31,8 +31,6 @@ class WelcomeMenuPresenter(view: WelcomeMenuContract.View, navigator: Navigator)
     }
 
     override fun onDirectorSelected(director: Director) {
-        navigator.displayMovieListScreen(director.name)
+        navigator.displayMovieListScreen(director)
     }
-
-
 }

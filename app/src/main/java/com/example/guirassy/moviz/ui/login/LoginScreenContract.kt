@@ -10,6 +10,7 @@ interface LoginScreenContract {
     }
 
     interface Presenter : BasePresenter {
+        fun onFacebookLogin()
     }
 
 }

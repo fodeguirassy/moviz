@@ -1,6 +1,7 @@
 package com.example.guirassy.moviz
 
 import android.app.Fragment
+import com.example.guirassy.moviz.model.Director
 import com.example.guirassy.moviz.model.Movie
 
 /**
@@ -9,7 +10,7 @@ import com.example.guirassy.moviz.model.Movie
 interface Navigator {
 
     fun displayLoginScreen()
-    fun displayMovieListScreen(directorName : String)
+    fun displayMovieListScreen(director : Director)
     fun displayMovieDetailsScreen(movie: Movie)
     fun displayPreviousScreen()
 }

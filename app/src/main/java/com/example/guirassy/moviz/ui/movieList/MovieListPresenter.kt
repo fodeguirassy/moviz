@@ -26,6 +26,6 @@ class MovieListPresenter(view: MovieListContract.View, navigator: Navigator, pri
     }
 
     override fun onDirectorSelected(director: Director) {
-        navigator.displayMovieListScreen(director.name)
+        navigator.displayMovieListScreen(director)
     }
 }

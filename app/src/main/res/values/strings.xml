@@ -12,4 +12,8 @@
         <item>Martin Scorsese</item>
     </string-array>
 
+    <string name="facebook_app_id">168789517001299</string>
+    <string name="fb_login_protocol_scheme">fb168789517001299</string>
+    <string name="fodeguipro_accessToken">EAACZAg18z4lMBAF9cOvZCHTAZCSZAwOO0nZCnbfH3i7lEvXKpHT8svKE3dOigDrJOsi1ZBRdM5C5D0juYuZAfYj63N26xuJBDuPMDmDkkZC8b0enpkkx7VqlhC7g3quTz3pvCIsosJeWXFrMQD3w6Mss5WIgy1h6a0CPPbPBX9SqSnnZBUy6S907d5o8CmCD6z0bEY3LcOImt6SalBW8QZBEBG</string>
+
 </resources>
