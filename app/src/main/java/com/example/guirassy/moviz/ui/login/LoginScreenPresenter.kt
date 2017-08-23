@@ -13,14 +13,29 @@ import java.util.*
 
 
 class IFacebookConnect : FacebookCallback<LoginResult> {
+
     override fun onCancel() {
         println("FB connect cancelled")
     }
+
     override fun onSuccess(result: LoginResult?) {
-        println("${result?.accessToken?.token}")
+        println("\tACCESSTOKEN : ${result?.accessToken?.token}")
+        println("\tUSER_ID ${Profile.getCurrentProfile().id}")
+
+        var requestParameters = Bundle()
+        requestParameters.putString("fields","id,name,last_name,link,email,picture")
+
+        GraphRequest(AccessToken.getCurrentAccessToken(),
+                Profile.getCurrentProfile().id,
+                requestParameters,
+                HttpMethod.GET,
+                GraphRequest.Callback {
+                    response: GraphResponse? ->
+                    println("GRAPH RESPONSE : ${response.toString()}")
+                }).executeAsync()
     }
     override fun onError(error: FacebookException?) {
-        println("${error.toString()}")
+        println(error.toString())
     }
 }
 
@@ -43,9 +58,6 @@ class LoginScreenPresenter(view: LoginScreenContract.View, navigator: Navigator)
    fun onSuccess(result: LoginResult?) {
         var requestParameters = Bundle()
         requestParameters.putString("fields","id,name,last_name,link,email,picture")
-
-        Log.i("FBLogin", result.toString())
-
         var graphRequest = GraphRequest.newMeRequest(
                 result?.accessToken,
                 { `object`: JSONObject?, response: GraphResponse? ->
