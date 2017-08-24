@@ -7,10 +7,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-/**
- * Created by guirassy on 14/08/2017.
- */
-
 
 fun buildGiphyHttpClient(): OkHttpClient {
     return OkHttpClient.Builder()
@@ -32,6 +28,11 @@ fun buildNetflixRRetrofit(httpClient: OkHttpClient) : Retrofit{
             .build()
 }
 
-fun buildNetflixRApi(retrofit: Retrofit) : NetflixRApi {
-    return retrofit.create(NetflixRApi::class.java)
+fun buildGraphRetrofit() : Retrofit {
+
+    return Retrofit.Builder()
+            .baseUrl("http://graph.facebook.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
 }

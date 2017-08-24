@@ -13,7 +13,6 @@ import com.example.guirassy.moviz.ui.movieDetails.MovieDetailsScreenFragment
 import com.example.guirassy.moviz.ui.movieDetails.MovieDetailsScreenPresenter
 import com.example.guirassy.moviz.ui.movieList.MovieListFragment
 import com.example.guirassy.moviz.ui.movieList.MovieListPresenter
-import com.facebook.CallbackManager
 
 
 class AppFragmentNavigator(context: Context, fragmentManager: FragmentManager, containerViewId: Int) :
