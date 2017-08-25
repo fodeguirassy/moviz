@@ -21,6 +21,7 @@ class AppFragmentNavigator(context: Context, fragmentManager: FragmentManager, c
     private val netflixRService = NetflixRService()
     lateinit private var movieListFragment: MovieListFragment
 
+
     override fun displayOrRestoreScreenOnActivityCreate() {
         // displayMovieListScreen()
     }

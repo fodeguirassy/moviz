@@ -32,9 +32,8 @@ class WelcomeMenuFragment : MvpFragment<WelcomeMenuContract.Presenter>(),
     }
 
     private fun onDirectorSelected(director: Director) {
-        (activity as MainActivity).navigator.displayMovieListScreen(director)
+        presenter.onDirectorSelected(director)
         (activity as MainActivity).drawer_layout.closeDrawers()
     }
-
 
 }
