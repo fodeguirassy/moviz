@@ -1,11 +1,43 @@
 package com.example.guirassy.moviz.platform
 
 import android.os.Bundle
+import com.example.guirassy.moviz.platform.api.GraphApi
 import com.example.guirassy.moviz.ui.login.LoginScreenPresenter
 import com.facebook.*
 import com.facebook.login.LoginResult
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class GraphService (var presenter : LoginScreenPresenter): FacebookCallback<LoginResult> {
+
+    lateinit var graphApi : GraphApi
+
+    init {
+        val okHttpClient = buildGiphyHttpClient()
+        val retrofit = buildGraphRetrofit(okHttpClient)
+        graphApi = retrofit.create(GraphApi::class.java)
+    }
+
+    /*
+    fun getFBUserInfos(query : String) {
+
+        graphApi.getFBUser(query)
+                .enqueue(object : GraphResponse(), Callback<GraphResponse> {
+
+                    override fun onResponse(call: Call<GraphResponse>?, response: Response<GraphResponse>?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+
+                    override fun onFailure(call: Call<GraphResponse>?, t: Throwable?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+
+                })
+
+    }
+    */
 
     override fun onCancel() {
         println("FB connect cancelled")

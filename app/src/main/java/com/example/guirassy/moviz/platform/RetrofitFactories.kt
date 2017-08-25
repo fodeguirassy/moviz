@@ -28,9 +28,10 @@ fun buildNetflixRRetrofit(httpClient: OkHttpClient) : Retrofit{
             .build()
 }
 
-fun buildGraphRetrofit() : Retrofit {
+fun buildGraphRetrofit(httpClient: OkHttpClient) : Retrofit {
 
     return Retrofit.Builder()
+            .client(httpClient)
             .baseUrl("http://graph.facebook.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()

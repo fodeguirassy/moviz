@@ -16,7 +16,10 @@ class WelcomeMenuFragment : MvpFragment<WelcomeMenuContract.Presenter>(),
         WelcomeMenuContract.View {
 
     override val defaultLayout: Int = R.layout.fragment_welcome_menu
-    private val controller = WelcomeMenuController(this)
+    private val controller = WelcomeMenuController({
+        director ->
+            onDirectorSelected(director)
+    })
 
     override fun setWelcomeMenu(directors: List<Director>) {
         controller.setData(directors)
@@ -28,9 +31,10 @@ class WelcomeMenuFragment : MvpFragment<WelcomeMenuContract.Presenter>(),
         welcome_menu_recyclerView.layoutManager = LinearLayoutManager(context) as RecyclerView.LayoutManager?
     }
 
-    fun onDirectorSelected(director: Director) {
+    private fun onDirectorSelected(director: Director) {
         (activity as MainActivity).navigator.displayMovieListScreen(director)
         (activity as MainActivity).drawer_layout.closeDrawers()
     }
+
 
 }
