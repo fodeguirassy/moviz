@@ -1,17 +1,16 @@
 package com.example.guirassy.moviz.ui.movieDetails
 
 
-import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.ekino.mvp.MvpFragment
 import com.example.guirassy.moviz.MainActivity
 import com.example.guirassy.moviz.R
 import com.example.guirassy.moviz.model.Movie
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.guirassy.moviz.perisistence.Preferences
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.fragment_movie_details_screen.*
 
@@ -30,7 +29,7 @@ class MovieDetailsScreenFragment : MvpFragment<MovieDetailsScreenContract.Presen
 
     companion object {
         fun newInstance(movie : Movie) : MovieDetailsScreenFragment {
-            var fragment = MovieDetailsScreenFragment()
+            val fragment = MovieDetailsScreenFragment()
             val args = Bundle()
             args.putSerializable("movie", movie)
             fragment.arguments = args
@@ -40,10 +39,17 @@ class MovieDetailsScreenFragment : MvpFragment<MovieDetailsScreenContract.Presen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var actionBar = (activity as AppCompatActivity).supportActionBar
-        (activity as MainActivity).toggle.isDrawerIndicatorEnabled = false
+        val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.title = "${movie.show_title}"
+        actionBar?.title = movie.show_title
+
+
+        (activity as MainActivity).toggle.isDrawerIndicatorEnabled = false
+        (activity as MainActivity).fab.setImageResource(R.drawable.movie_add)
+        (activity as MainActivity).fab.setOnClickListener {
+            Preferences.addMovie(context,movie)
+            Snackbar.make(view, "Your movie has been successfully added to your preferences", Snackbar.LENGTH_LONG)
+        }
 
         Glide.with(view.context)
                 .load(movie.poster)
@@ -54,4 +60,11 @@ class MovieDetailsScreenFragment : MvpFragment<MovieDetailsScreenContract.Presen
 
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        (activity as MainActivity).fab.setImageResource(R.drawable.account)
+        (activity as MainActivity).fab.setOnClickListener {
+            presenter.displayLoginScreen()
+        }
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.guirassy.moviz.platform
 
 import com.example.guirassy.moviz.BuildConfig
-import com.example.guirassy.moviz.platform.api.NetflixRApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -32,7 +31,7 @@ fun buildGraphRetrofit(httpClient: OkHttpClient) : Retrofit {
 
     return Retrofit.Builder()
             .client(httpClient)
-            .baseUrl("http://graph.facebook.com/")
+            .baseUrl("https://graph.facebook.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

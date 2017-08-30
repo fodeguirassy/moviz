@@ -3,9 +3,11 @@ package com.example.guirassy.moviz.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
 import com.ekino.mvp.MvpFragment
+import com.example.guirassy.moviz.MainActivity
 import com.example.guirassy.moviz.R
 import com.example.guirassy.moviz.platform.GraphService
 import com.facebook.login.LoginManager
@@ -24,20 +26,19 @@ class LoginScreenFragment : MvpFragment<LoginScreenContract.Presenter>(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       // Blurry.with(view.context).radius(250).sampling(10).onto(this.view?.parent as ViewGroup)
-       facebook_connect.setOnClickListener {
-           presenter.onFacebookLogin()
-           println("onViewCreated : RETRIEVED FACEBOOK USER ${(presenter as LoginScreenPresenter).user.name}")
 
+        var actionBar = (activity as AppCompatActivity).supportActionBar
+        (activity as MainActivity).toggle.isDrawerIndicatorEnabled = false
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.title = "Login"
+
+        facebook_connect.setOnClickListener {
+           presenter.onFacebookLogin()
        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         (presenter as LoginScreenPresenter).callbackManager.onActivityResult(requestCode,resultCode,data)
-
-        println(" onActivityResult : RETRIEVED FACEBOOK USER ${(presenter as LoginScreenPresenter).user.name}")
-
-
     }
-
 }

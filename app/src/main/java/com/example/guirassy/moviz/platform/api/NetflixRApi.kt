@@ -12,4 +12,5 @@ interface NetflixRApi
 {
     @GET("/api/api.php")
     fun getDirectorMovies(@Query("director", encoded = true) query: String): Call<List<Movie>>
+
 }

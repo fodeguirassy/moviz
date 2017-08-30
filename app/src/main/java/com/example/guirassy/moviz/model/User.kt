@@ -1,9 +1,11 @@
 package com.example.guirassy.moviz.model
 
+import java.io.Serializable
+
 /**
  * Created by guirassy on 24/08/2017.
  */
-class User {
+class User : Serializable {
 
      var name: String? = null
         get() = field
@@ -32,5 +34,9 @@ class User {
      var gender : String ? = null
         get() = field
         set(value){field = value}
+
+     var savedMovies : MutableList<Movie> = mutableListOf()
+        get() = field
+        set(value) {field = value}
 
 }

@@ -17,4 +17,12 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="textViewCustomStyle" parent="@android:style/TextAppearance">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 </resources>

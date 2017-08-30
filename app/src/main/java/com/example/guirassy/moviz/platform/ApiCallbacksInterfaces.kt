@@ -9,3 +9,8 @@ interface NetflixRApiCallback {
     fun onSuccess(movies : List<Movie>)
     fun onError(t: Throwable?)
 }
+
+interface GraphServiceCallBack {
+    fun onSuccess()
+    fun onError()
+}

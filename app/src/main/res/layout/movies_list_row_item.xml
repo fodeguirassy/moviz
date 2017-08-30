@@ -10,8 +10,8 @@
         android:layout_marginBottom="10dp">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="550dp"
+            android:layout_width="wrap_content"
+            android:layout_height="450dp"
             android:id="@+id/movie_list_img_view"
             android:scaleType="centerCrop"
             />

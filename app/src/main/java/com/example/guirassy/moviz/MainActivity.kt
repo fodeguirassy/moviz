@@ -1,7 +1,6 @@
 package com.example.guirassy.moviz
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -13,10 +12,10 @@ import com.example.guirassy.moviz.ui.welcomeMenu.WelcomeMenuPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
 
     lateinit var navigator: Navigator
-    lateinit var toggle : ActionBarDrawerToggle
+    lateinit var toggle: ActionBarDrawerToggle
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,11 +29,11 @@ class MainActivity : AppCompatActivity(){
 
         initializeMenuFragment()
 
-
         fab.setOnClickListener { view ->
+            /*
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
-
+            */
             navigator.displayLoginScreen()
         }
 
@@ -44,16 +43,14 @@ class MainActivity : AppCompatActivity(){
         toggle.syncState()
 
         toggle.setToolbarNavigationClickListener {
-            //navigator.displayPreviousScreen()
             onBackPressed()
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        if(supportFragmentManager.backStackEntryCount > 0){
+        if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()
-        }else{
+        } else {
             super.onBackPressed()
         }
         return true
@@ -61,10 +58,7 @@ class MainActivity : AppCompatActivity(){
 
 
     override fun onBackPressed() {
-
-
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
-
         if (this.drawer_layout.isDrawerOpen(GravityCompat.START)) {
             this.drawer_layout.closeDrawer(GravityCompat.START)
         } else {
