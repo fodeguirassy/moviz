@@ -5,8 +5,11 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
+import android.view.MenuItem
 import com.ekino.ekinodemo.AppFragmentNavigator
 import com.example.guirassy.moviz.model.Director
+import com.example.guirassy.moviz.model.User
+import com.example.guirassy.moviz.perisistence.Preferences
 import com.example.guirassy.moviz.ui.welcomeMenu.WelcomeMenuFragment
 import com.example.guirassy.moviz.ui.welcomeMenu.WelcomeMenuPresenter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var navigator: Navigator
     lateinit var toggle: ActionBarDrawerToggle
 
+    private var user = User()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +49,10 @@ class MainActivity : AppCompatActivity() {
         toggle.setToolbarNavigationClickListener {
             onBackPressed()
         }
+
+
+        Preferences.initSharedPreferences(this)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -77,5 +85,15 @@ class MainActivity : AppCompatActivity() {
         val welcomeMenuPresenter = WelcomeMenuPresenter(welcomeMenuFragment, navigator)
         welcomeMenuFragment.presenter = welcomeMenuPresenter
         supportFragmentManager.beginTransaction().replace(R.id.menu_container, welcomeMenuFragment).commit()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if(item.itemId == R.id.action_settings){
+            user  = Preferences.retrieveUserFromPrefs()as User
+            navigator.displayUserProfileScreen( user)
+            true
+        }else{
+            super.onOptionsItemSelected(item)
+        }
     }
 }

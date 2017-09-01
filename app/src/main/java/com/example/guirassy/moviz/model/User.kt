@@ -2,12 +2,10 @@ package com.example.guirassy.moviz.model
 
 import java.io.Serializable
 
-/**
- * Created by guirassy on 24/08/2017.
- */
+
 class User : Serializable {
 
-     var name: String? = null
+    var name: String? = null
         get() = field
         set(value){field =value}
 

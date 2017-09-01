@@ -19,7 +19,6 @@ import com.example.guirassy.moviz.ui.movieList.MovieListFragment
 import com.example.guirassy.moviz.ui.movieList.MovieListPresenter
 import com.example.guirassy.moviz.ui.userProfile.UserProfileScreenFragment
 import com.example.guirassy.moviz.ui.userProfile.UserProfileScreenPresenter
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 
@@ -74,9 +73,9 @@ class AppFragmentNavigator(context: Context, fragmentManager: FragmentManager, c
         addToBackStackWithFadeAnimation(userProfileFragment)
     }
 
-    override fun getUserFromPrefs() : User?{ return Preferences.retrieveUserFromPrefs(context) }
+    override fun getUserFromPrefs() : User?{ return Preferences.retrieveUserFromPrefs() }
 
-    override fun saveUserInPrefs(user : User){ Preferences.saveUserInPrefs(context,user) }
+    override fun saveUserInPrefs(user : User){ Preferences.saveUserInPrefs(user) }
 
     override fun switchFabIcon() {
         var fab = (context as MainActivity).fab

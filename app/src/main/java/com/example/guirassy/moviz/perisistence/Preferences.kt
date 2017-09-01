@@ -1,6 +1,8 @@
 package com.example.guirassy.moviz.perisistence
 
 import android.content.Context
+import android.content.SharedPreferences
+import android.widget.Toast
 import com.example.guirassy.moviz.model.Movie
 import com.example.guirassy.moviz.model.User
 import com.google.gson.Gson
@@ -9,38 +11,40 @@ import com.google.gson.Gson
 class Preferences {
 
     companion object {
-        lateinit var user : User
+        private lateinit var user : User
         private val PREFS = "PREFS_USER"
         private val USER_TAG = "user"
-        private val gson = Gson()
+        private var gson = Gson()
 
-        fun setUser(context: Context){
-            user  = retrieveUserFromPrefs(context)!!
+        private lateinit var sharedPreferences : SharedPreferences
+        private lateinit var sharedPrefEditor : SharedPreferences.Editor
+
+        fun initSharedPreferences(context: Context){
+            sharedPreferences = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+            sharedPrefEditor = sharedPreferences.edit()
+            user = retrieveUserFromPrefs()!!
         }
-
-        fun saveUserInPrefs(context: Context,user : User) {
-            val sharedPrefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-            val editor = sharedPrefs.edit()
+        fun saveUserInPrefs(user : User) {
             val jsonUser = gson.toJson(user)
-            editor.putString(PREFS,jsonUser)
-            editor.commit()
+            sharedPrefEditor.putString(USER_TAG,jsonUser)
+            sharedPrefEditor.commit()
         }
 
-        fun retrieveUserFromPrefs(context: Context) : User? {
-            val sharedPrefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-            sharedPrefs.all
-            if(sharedPrefs.getString(USER_TAG, null) != null){
-                val jsonUser = sharedPrefs.getString(USER_TAG, null)
-                return gson.fromJson(jsonUser, User::class.java)
+        fun retrieveUserFromPrefs() : User? {
+            return if(sharedPreferences.getString(USER_TAG, null) != null){
+                val jsonUser = sharedPreferences.getString(USER_TAG, null)
+                var res = gson.fromJson(jsonUser, User::class.java)
+                //res.savedMovies.clear()
+                res
             }else{
-                return null
+                null
             }
         }
-
-        fun addMovie(context: Context, movie : Movie){
-            setUser(context)
-            user.savedMovies.add(movie)
-            saveUserInPrefs(context, user)
+        fun addMovie(movie : Movie){
+            if(!user.savedMovies.contains(movie)){
+                user.savedMovies.add(movie)
+                saveUserInPrefs(user)
+            }
         }
     }
 }

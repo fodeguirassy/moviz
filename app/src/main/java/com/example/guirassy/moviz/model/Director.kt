@@ -7,6 +7,5 @@ import java.io.Serializable
  */
 
 data class Director(val name : String, val pictureResId : Int) : Serializable {
-    var movies = mutableListOf<Movie>()
-
+    val movies = mutableListOf<Movie>()
 }

@@ -6,9 +6,8 @@ import java.io.Serializable
 /**
  * Created by guirassy on 10/08/2017.
  */
-data class Movie(var show_title: String, var release_year : String,
-                 var rating : String, var category : String,
-                 var show_cast : String, var director : String,
-                 var summary : String, var poster : String,
-                 var runtime : String, var posterDrawable : Drawable) : Serializable
-
+data class Movie(val show_title: String, val release_year : String,
+                 val rating : String, val category : String,
+                 val show_cast : String, val director : String,
+                 val summary : String, val poster : String,
+                 val runtime : String, val posterDrawable : Drawable) : Serializable

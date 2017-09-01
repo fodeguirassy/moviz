@@ -54,7 +54,7 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:3.7.0'
 
-    implementation 'com.airbnb.android:epoxy:2.2.0'
+    implementation 'com.airbnb.android:epoxy:2.3.0'
 
     implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0'
     implementation 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:2.0.0'

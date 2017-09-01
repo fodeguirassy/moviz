@@ -63,7 +63,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
 
             <TextView
@@ -86,7 +86,8 @@
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/user_saved_movies_RV">
+                android:id="@+id/user_saved_movies_RV"
+                android:layout_marginTop="50dp">
 
 
             </android.support.v7.widget.RecyclerView>

@@ -2,9 +2,9 @@ package com.example.guirassy.moviz.ui.movieDetails
 
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.ekino.mvp.MvpFragment
 import com.example.guirassy.moviz.MainActivity
@@ -45,10 +45,12 @@ class MovieDetailsScreenFragment : MvpFragment<MovieDetailsScreenContract.Presen
 
 
         (activity as MainActivity).toggle.isDrawerIndicatorEnabled = false
+
         (activity as MainActivity).fab.setImageResource(R.drawable.movie_add)
         (activity as MainActivity).fab.setOnClickListener {
-            Preferences.addMovie(context,movie)
-            Snackbar.make(view, "Your movie has been successfully added to your preferences", Snackbar.LENGTH_LONG)
+            Preferences.addMovie(movie)
+            Toast.makeText(context, "Your movie has been successfully added to your preferences", Toast.LENGTH_LONG).show()
+            //Snackbar.make(view, "Your movie has been successfully added to your preferences", Snackbar.LENGTH_LONG)
         }
 
         Glide.with(view.context)
