@@ -34,11 +34,8 @@ class Preferences {
             return if(sharedPreferences.getString(USER_TAG, null) != null){
                 val jsonUser = sharedPreferences.getString(USER_TAG, null)
                 var res = gson.fromJson(jsonUser, User::class.java)
-                //res.savedMovies.clear()
                 res
-            }else{
-                null
-            }
+            } else  null
         }
         fun addMovie(movie : Movie){
             if(!user.savedMovies.contains(movie)){

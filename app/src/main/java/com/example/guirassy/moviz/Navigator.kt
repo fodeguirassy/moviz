@@ -5,9 +5,7 @@ import com.example.guirassy.moviz.model.Director
 import com.example.guirassy.moviz.model.Movie
 import com.example.guirassy.moviz.model.User
 
-/**
- * Created by guirassy on 11/08/2017.
- */
+
 interface Navigator {
 
     fun displayLoginScreen()

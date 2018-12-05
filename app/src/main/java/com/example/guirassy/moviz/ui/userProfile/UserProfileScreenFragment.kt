@@ -2,19 +2,15 @@ package com.example.guirassy.moviz.ui.userProfile
 
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import com.airbnb.epoxy.EpoxyModel
-import com.airbnb.epoxy.EpoxyTouchHelper
-import com.bumptech.glide.Glide
 import com.ekino.mvp.MvpFragment
 import com.example.guirassy.moviz.MainActivity
 import com.example.guirassy.moviz.R
+import com.example.guirassy.moviz.R.id.user_imageView
+import com.example.guirassy.moviz.R.id.user_saved_movies_RV
 import com.example.guirassy.moviz.model.Movie
 import com.example.guirassy.moviz.model.User
 import com.example.guirassy.moviz.perisistence.Preferences
-import kotlinx.android.synthetic.main.fragment_user_profile_screen.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,7 +21,6 @@ class UserProfileScreenFragment : MvpFragment<UserProfileScreenContract.Presente
     lateinit private var user: User
 
     private val controller = UserMoviesController()
-
 
     override fun setUserMoviesList(movies: List<Movie>) {
         controller.setData(movies)

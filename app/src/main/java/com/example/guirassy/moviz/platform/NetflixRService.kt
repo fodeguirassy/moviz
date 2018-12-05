@@ -7,9 +7,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.net.URLEncoder
 
-/**
- * Created by guirassy on 14/08/2017.
- */
 class NetflixRService {
 
     private var netflixRApi : NetflixRApi

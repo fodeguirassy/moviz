@@ -14,5 +14,4 @@ class UserProfileScreenPresenter(view: UserProfileScreenContract.View, navigator
         val user = Preferences.retrieveUserFromPrefs()
         view.setUserMoviesList(user!!.savedMovies)
     }
-
 }
